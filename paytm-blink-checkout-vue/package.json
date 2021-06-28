@@ -1,0 +1,81 @@
+{
+  "name": "paytm-blink-checkout-vue",
+  "version": "0.1.0",
+  "private": true,
+  "author": "Ankit Gupta",
+  "description": "Vue js based implementation for Paytm Blink Checkout JS",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build:lib": "rm -rf library-dist && vue-cli-service build --target lib --name paytm-blink-checkout-vue src/library-entry.js --dest library-dist/",
+    "build:lib-package": "rm -rf library-dist && rollup -c && npm pack",
+    "lint": "vue-cli-service lint"
+  },
+  "main": "./library-dist/index.umd.js",
+  "module": "./library-dist/index.esm.js",
+  "unpkg": "./library-dist/index.min.js",
+  "exports": {
+    ".": {
+      "import": "./library-dist/index.esm.js",
+      "require": "./library-dist/index.umd.js"
+    }
+  },
+  "keywords": [
+    "Paytm",
+    "Blink Checkout JS",
+    "Checkout JS",
+    "Paytm Blink Checkout Vue",
+    "paytm-blink-checkout-vue"
+  ],
+  "license": "MIT",
+  "files": [
+    "library-dist/*"
+  ],
+  "dependencies": {
+    "vue-demi": "latest"
+  },
+  "peerDependencies": {
+    "@vue/composition-api": "^1.0.0-beta.1",
+    "vue": "^2.0.0 || >=3.0.0-rc.0"
+  },
+  "peerDependenciesMeta": {
+    "@vue/composition-api": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0",
+    "babel-eslint": "^10.1.0",
+    "core-js": "^3.6.5",
+    "esbuild": "^0.6.34",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^7.0.0",
+    "npm": "^7.17.0",
+    "pack": "^2.2.0",
+    "rollup": "^2.26.3",
+    "rollup-plugin-esbuild": "^2.4.2",
+    "rollup-plugin-vue": "^6.0.0",
+    "vue": "^3.0.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
