@@ -1,6 +1,6 @@
 <template>
   <div>
-    <textarea cols="50" rows="25" :value="configString" ref="textAreaRef" />
+    <textarea cols="50" rows="25" ref="textAreaRef" />
     <div>
       <button type="button" @click="this.toggleCheckout">
         Toggle Checkout Screen
@@ -11,7 +11,12 @@
       <button type="button" @click="this.loadCheckoutScript">
         Use existing checkout instance
       </button>
-      <input type="checkbox" @click="this.toggleOpenInPopup" :checked="openInPopup" /> Open in popup
+      <input
+        type="checkbox"
+        @click="this.toggleOpenInPopup"
+        :checked="openInPopup"
+      />
+      Open in popup
     </div>
     <br />
 
@@ -29,9 +34,13 @@
 </template>
 
 <script>
-import { CheckoutProvider, Checkout, injectCheckout} from "paytm-blink-checkout-vue";
+import {
+  CheckoutProvider,
+  Checkout,
+  injectCheckout,
+} from "paytm-blink-checkout-vue";
 import CONFIG from "./../mocks/merchant-config";
-import InjectedCheckout from './Injected-checkout';
+import InjectedCheckout from "./Injected-checkout";
 
 const USE_EXISTING_CHECKOUT_INSTANCE = "Use existing checkout instance : ";
 
@@ -48,7 +57,7 @@ export default {
   components: {
     CheckoutProvider: CheckoutProvider,
     Checkout: Checkout,
-    InjectedCheckout: injectCheckout(InjectedCheckout)
+    InjectedCheckout: injectCheckout(InjectedCheckout),
   },
   computed: {
     configString: function () {
@@ -58,6 +67,11 @@ export default {
         return "";
       }
     },
+  },
+  mounted() {
+    if (this.$refs.textAreaRef) {
+      this.$refs.textAreaRef.value = this.configString;
+    }
   },
   methods: {
     appendHandler(config) {
@@ -76,9 +90,9 @@ export default {
     renderUpdateConfig() {
       const config = this.getUpdatedConfig();
 
-      if(config){
+      if (config) {
         this.config = config;
-      }else{
+      } else {
         alert("Invalid config. Please make sure it's a valid json");
       }
     },
@@ -118,8 +132,8 @@ export default {
 
         if (checkoutJsInstance && checkoutJsInstance.onLoad) {
           checkoutJsInstance.onLoad(() => {
-              this.checkoutJsInstance = checkoutJsInstance;
-              this.renderUpdateConfig();
+            this.checkoutJsInstance = checkoutJsInstance;
+            this.renderUpdateConfig();
           });
         } else {
           console.error(
