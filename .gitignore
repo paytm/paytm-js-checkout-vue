@@ -4,7 +4,10 @@
 **/library-dist
 
 # Lib nmp module
-paytm-blink-checkout-vue-*.tgz
+**/paytm-blink-checkout-vue-*.tgz
+
+# package lock
+**/package-lock.json
 
 # local env files
 .env.local
