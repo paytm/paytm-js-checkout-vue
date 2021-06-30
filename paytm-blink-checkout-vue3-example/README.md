@@ -1,4 +1,4 @@
-# paytm-blink-checkout-react integration example
+# paytm-blink-checkout-vue integration example
 
 The project demonstrates how to make use of paytm-blink-checkout-vue in a Vue 3 project.
 
